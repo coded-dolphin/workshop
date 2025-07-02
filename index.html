@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thio's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #181a1b;
+            color: #f1f1f1;
+            display: flex;
+            min-height: 100vh;
+        }
+        nav {
+            width: 100vw;
+            height: 70px;
+            background: #23272a;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+        .nav-icon {
+            font-size: 2em;
+            color: #61dafb;
+            margin-right: 24px;
+        }
+        nav a {
+            color: #bdbdbd;
+            text-decoration: none;
+            padding: 14px 0;
+            margin: 0 8px;
+            border-radius: 8px;
+            width: 48px;
+            text-align: center;
+            display: inline-block;
+            font-size: 1.3em;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            background: #393e46;
+            color: #61dafb;
+        }
+        main {
+            flex: 1;
+            padding: 100px 40px 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 100vw;
+            box-sizing: border-box;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            background: linear-gradient(90deg, #23272a 60%, #181a1b 100%);
+            border-radius: 24px;
+            padding: 48px 36px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        }
+        .hero-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 24px rgba(97,218,251,0.15);
+            border: 4px solid #61dafb;
+            background: #23272a;
+        }
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin: 0 0 18px 0;
+            color: #61dafb;
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+        .hero-content p {
+            font-size: 1.4em;
+            color: #e0e0e0;
+            margin: 0;
+            max-width: 500px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #61dafb;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                gap: 24px;
+                padding: 32px 16px;
+            }
+            .hero-image {
+                width: 120px;
+                height: 120px;
+            }
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+        }
+        @media (max-width: 700px) {
+            nav {
+                height: 60px;
+            }
+            .nav-icon {
+                margin-right: 12px;
+                font-size: 1.6em;
+            }
+            nav a {
+                width: 44px;
+                padding: 10px 0;
+                margin: 0 2px;
+                font-size: 1.2em;
+            }
+            main {
+                padding: 80px 10px 30px 10px;
+            }
+        }
+        @media (min-width: 1200px) {
+            nav {
+                height: 80px;
+            }
+            .nav-icon {
+                font-size: 2.4em;
+            }
+            nav a {
+                font-size: 1.5em;
+                width: 56px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span class="nav-icon"><i class="fas fa-code"></i></span>
+        <a href="#about" title="About"><i class="fas fa-user"></i></a>
+        <a href="#projects" title="Projects"><i class="fas fa-folder-open"></i></a>
+        <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+    </nav>
+    <main>
+        <section class="hero">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=facearea&w=400&h=400&facepad=2" alt="Profile Photo">
+            <div class="hero-content">
+                <h1>Hi, I'm Thio</h1>
+                <p>Creative Developer & Problem Solver. I build modern, efficient, and beautiful web experiences. Welcome to my portfolio!</p>
+            </div>
+        </section>
+        <section id="about" class="section">
+            <h1>About Me</h1>
+            <p>Hello! I'm Thio, a passionate developer building creative and efficient solutions. Welcome to my portfolio.</p>
+        </section>
+        <section id="projects" class="section">
+            <h1>Projects</h1>
+            <ul>
+                <li>Project One – Description of project one.</li>
+                <li>Project Two – Description of project two.</li>
+                <li>Project Three – Description of project three.</li>
+            </ul>
+        </section>
+        <section id="contact" class="section">
+            <h1>Contact</h1>
+            <p>Email: thio@example.com</p>
+        </section>
+    </main>
+</body>
+</html>
