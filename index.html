@@ -7,38 +7,68 @@
     <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #e0edff;
+            --bg: #f7fafc;
+            --surface: #fff;
+            --text: #1a2233;
+            --text-light: #4b5563;
+            --border: #e5e7eb;
+            --shadow: 0 2px 12px rgba(30,34,40,0.07);
+            --radius: 18px;
+            --spacing: 28px;
+            --section-spacing: 40px;
+            --font-main: 'Segoe UI', Arial, sans-serif;
+            --font-size-base: 18px;
+            --font-size-lg: 2.5rem;
+            --font-size-md: 1.25rem;
+            --font-size-sm: 1rem;
+            --font-weight-bold: 700;
+            --font-weight-normal: 400;
+        }
+        html {
+            font-size: 18px;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
         body {
             margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #181a1b;
-            color: #f1f1f1;
+            font-family: var(--font-main);
+            background: var(--bg);
+            color: var(--text);
             display: flex;
             min-height: 100vh;
+            letter-spacing: 0.01em;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
         nav {
             width: 100vw;
             height: 70px;
-            background: #23272a;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
             padding: 0;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow);
             position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
-            z-index: 100;
+            z-index: 101;
+            transition: all 0.3s;
         }
         .nav-icon {
             font-size: 2em;
-            color: #61dafb;
+            color: var(--primary);
             margin-right: 24px;
         }
         nav a {
-            color: #bdbdbd;
+            color: var(--text-light);
             text-decoration: none;
-            padding: 14px 0;
+            padding: 12px 0;
             margin: 0 8px;
             border-radius: 8px;
             width: 48px;
@@ -47,73 +77,275 @@
             font-size: 1.3em;
             transition: background 0.2s, color 0.2s;
         }
-        nav a:hover, nav a.active {
-            background: #393e46;
-            color: #61dafb;
-        }
         main {
             flex: 1;
-            padding: 100px 40px 50px 40px;
+            padding: 100px 32px 70px 32px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            width: 100vw;
             box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            transition: padding-left 0.3s;
         }
         .hero {
             display: flex;
             align-items: center;
-            gap: 40px;
-            margin-bottom: 60px;
-            background: linear-gradient(90deg, #23272a 60%, #181a1b 100%);
-            border-radius: 24px;
+            gap: var(--spacing);
+            margin-bottom: var(--section-spacing);
+            background: linear-gradient(90deg, #f3f7fa 60%, #e0edff 100%);
+            border-radius: var(--radius);
             padding: 48px 36px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            box-shadow: var(--shadow);
+            min-height: 340px;
+            width: 100%;
+            justify-content: center;
+            position: relative;
         }
         .hero-image {
             width: 180px;
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 4px 24px rgba(97,218,251,0.15);
-            border: 4px solid #61dafb;
-            background: #23272a;
+            box-shadow: 0 4px 24px rgba(37,99,235,0.10);
+            border: 4px solid var(--primary);
+            background: #f3f7fa;
         }
         .hero-content h1 {
-            font-size: 3.5em;
-            margin: 0 0 18px 0;
-            color: #61dafb;
-            font-weight: 700;
-            letter-spacing: -2px;
+            font-size: 2.8rem;
+            margin: 0 0 16px 0;
+            color: var(--primary);
+            font-weight: var(--font-weight-bold);
+            letter-spacing: -1px;
+            line-height: 1.1;
         }
         .hero-content p {
-            font-size: 1.4em;
-            color: #e0e0e0;
-            margin: 0;
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin: 0 0 18px 0;
             max-width: 500px;
+            line-height: 1.6;
+        }
+        .hero-buttons {
+            margin-top: 18px;
+            display: flex;
+            gap: 16px;
+        }
+        .hero-buttons a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 24px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+            transition: background 0.2s;
+        }
+        .hero-buttons a:hover {
+            background: #1741a6;
         }
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #61dafb;
+            font-size: var(--font-size-lg);
+            margin-bottom: 12px;
+            color: var(--primary);
+            font-weight: var(--font-weight-bold);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+        h1, h2, h3 {
+            font-family: var(--font-main);
         }
         .section {
-            margin-bottom: 40px;
+            margin-bottom: var(--section-spacing);
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .section-header i {
+            font-size: 1.5em;
+            color: var(--primary);
+        }
+        .section p, .section ul, .section li {
+            font-size: var(--font-size-md);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        .about-cards {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+        .about-card {
+            flex: 1 1 180px;
+            background: var(--primary-light);
+            border-radius: 14px;
+            padding: 18px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 160px;
+            box-shadow: 0 1px 6px rgba(37,99,235,0.06);
+        }
+        .about-card i {
+            font-size: 2em;
+            color: var(--primary);
+        }
+        .skills-list, .timeline, .testimonials-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .skills-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            margin: 0;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+        .skills-list i {
+            font-size: 1.2em;
+        }
+        .projects-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .project-card {
+            flex: 1 1 260px;
+            background: var(--primary-light);
+            border-radius: 14px;
+            padding: 18px 16px;
+            box-shadow: 0 1px 6px rgba(37,99,235,0.06);
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            height: 120px;
+            margin-bottom: 8px;
+        }
+        .project-card h3 {
+            margin: 0 0 6px 0;
+            font-size: 1.1em;
+            color: var(--primary);
+        }
+        .timeline li {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .timeline-icon {
+            font-size: 1.5em;
+            color: var(--primary);
+            margin-top: 2px;
+        }
+        .timeline-content {
+            flex: 1;
+        }
+        .timeline strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .testimonials-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .testimonial-card {
+            flex: 1 1 220px;
+            background: var(--primary-light);
+            border-radius: 14px;
+            padding: 18px 16px;
+            box-shadow: 0 1px 6px rgba(37,99,235,0.06);
+            min-width: 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        .testimonial-card .testimonial-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .testimonial-card img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        .testimonial-card .testimonial-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1em;
+        }
+        .testimonial-card .testimonial-role {
+            font-size: 0.95em;
+            color: var(--text-light);
+        }
+        .contact-links {
+            display: flex;
+            gap: 18px;
+            margin-top: 12px;
+        }
+        .contact-links a {
+            color: var(--primary);
+            font-size: 1.7em;
+            transition: color 0.2s;
+        }
+        .contact-links a:hover {
+            color: #1741a6;
+        }
+        /* Responsive styles */
         @media (max-width: 900px) {
             .hero {
                 flex-direction: column;
                 align-items: flex-start;
                 text-align: left;
-                gap: 24px;
-                padding: 32px 16px;
+                gap: 18px;
+                padding: 28px 12px;
             }
             .hero-image {
-                width: 120px;
-                height: 120px;
+                width: 110px;
+                height: 110px;
             }
             .hero-content h1 {
-                font-size: 2.2em;
+                font-size: 1.8rem;
+            }
+            .about-cards, .projects-grid, .testimonials-list {
+                flex-direction: column;
+                gap: 14px;
             }
         }
         @media (max-width: 700px) {
@@ -131,54 +363,250 @@
                 font-size: 1.2em;
             }
             main {
-                padding: 80px 10px 30px 10px;
+                padding: 80px 6px 30px 6px;
+            }
+            .section {
+                padding: 16px 6px;
             }
         }
         @media (min-width: 1200px) {
             nav {
-                height: 80px;
+                flex-direction: column;
+                width: 90px;
+                height: 100vh;
+                justify-content: flex-start;
+                align-items: center;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+                position: fixed;
+                padding-top: 32px;
+                padding-bottom: 32px;
+                border-top: none;
+                border-right: 1px solid var(--border);
             }
             .nav-icon {
-                font-size: 2.4em;
+                margin: 0 0 32px 0;
+                font-size: 2.2em;
             }
             nav a {
-                font-size: 1.5em;
+                display: block;
+                margin: 12px 0;
                 width: 56px;
+                height: 56px;
+                line-height: 56px;
+                font-size: 1.3em;
+                padding: 0;
             }
+            main {
+                padding-left: 120px;
+                padding-top: 48px;
+                padding-right: 40px;
+                padding-bottom: 50px;
+                width: calc(100vw - 120px);
+            }
+        }
+        /* Accent link color */
+        a, a:visited {
+            color: var(--primary);
+        }
+        a:hover {
+            color: #1741a6;
         }
     </style>
 </head>
 <body>
     <nav>
-        <span class="nav-icon"><i class="fas fa-code"></i></span>
-        <a href="#about" title="About"><i class="fas fa-user"></i></a>
-        <a href="#projects" title="Projects"><i class="fas fa-folder-open"></i></a>
-        <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+        <span class="nav-icon"><i class="fas fa-terminal"></i></span>
+        <a href="#about" title="About"><i class="fas fa-id-card"></i></a>
+        <a href="#skills" title="Skills"><i class="fas fa-brain"></i></a>
+        <a href="#projects" title="Projects"><i class="fas fa-diagram-project"></i></a>
+        <a href="#experience" title="Experience"><i class="fas fa-timeline"></i></a>
+        <a href="#testimonials" title="Testimonials"><i class="fas fa-quote-left"></i></a>
+        <a href="#contact" title="Contact"><i class="fas fa-paper-plane"></i></a>
     </nav>
     <main>
-        <section class="hero">
-            <img class="hero-image" src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=facearea&w=400&h=400&facepad=2" alt="Profile Photo">
+        <section class="hero" id="home">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=facearea&w=400&h=400&facepad=2" alt="Profile Photo">
             <div class="hero-content">
                 <h1>Hi, I'm Thio</h1>
-                <p>Creative Developer & Problem Solver. I build modern, efficient, and beautiful web experiences. Welcome to my portfolio!</p>
+                <p>
+                    <span style="font-weight:600;color:var(--primary)">Creative Developer</span> &amp; <span style="font-weight:600;color:var(--primary)">Problem Solver</span>.<br>
+                    I build modern, efficient, and beautiful web experiences.<br>
+                    <span style="color:#1741a6">Welcome to my portfolio!</span>
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects"><i class="fas fa-diagram-project"></i> View Projects</a>
+                    <a href="#contact"><i class="fas fa-paper-plane"></i> Contact Me</a>
+                </div>
             </div>
         </section>
         <section id="about" class="section">
-            <h1>About Me</h1>
-            <p>Hello! I'm Thio, a passionate developer building creative and efficient solutions. Welcome to my portfolio.</p>
+            <div class="section-header">
+                <i class="fas fa-id-card"></i>
+                <h1>About Me</h1>
+            </div>
+            <p>Hello! I'm Thio, a passionate developer building creative and efficient solutions. I love turning ideas into reality with code.</p>
+            <div class="about-cards">
+                <div class="about-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div>
+                        <div style="font-weight:600;">B.Sc. Computer Science</div>
+                        <div style="font-size:0.98em;color:var(--text-light);">University of Tech</div>
+                    </div>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <div style="font-weight:600;">Based in Berlin</div>
+                        <div style="font-size:0.98em;color:var(--text-light);">Remote-friendly</div>
+                    </div>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-heart"></i>
+                    <div>
+                        <div style="font-weight:600;">Hobbies</div>
+                        <div style="font-size:0.98em;color:var(--text-light);">Photography, Hiking, Gaming</div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="projects" class="section">
-            <h1>Projects</h1>
-            <ul>
-                <li>Project One – Description of project one.</li>
-                <li>Project Two – Description of project two.</li>
-                <li>Project Three – Description of project three.</li>
+        <section id="skills" class="section">
+            <div class="section-header">
+                <i class="fas fa-brain"></i>
+                <h1>Skills</h1>
+            </div>
+            <ul class="skills-list">
+                <li><i class="fab fa-html5"></i> HTML5</li>
+                <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                <li><i class="fab fa-js-square"></i> JavaScript</li>
+                <li><i class="fab fa-react"></i> React</li>
+                <li><i class="fab fa-node-js"></i> Node.js</li>
+                <li><i class="fab fa-python"></i> Python</li>
+                <li><i class="fas fa-pencil-ruler"></i> UI/UX Design</li>
+                <li><i class="fab fa-github"></i> Git &amp; GitHub</li>
             </ul>
         </section>
+        <section id="projects" class="section">
+            <div class="section-header">
+                <i class="fas fa-diagram-project"></i>
+                <h1>Projects</h1>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Project One">
+                    <h3><i class="fas fa-rocket"></i> Project One</h3>
+                    <div style="color:var(--text-light);font-size:1em;">A modern web app for task management with real-time collaboration and beautiful UI.</div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Project Two">
+                    <h3><i class="fas fa-chart-line"></i> Project Two</h3>
+                    <div style="color:var(--text-light);font-size:1em;">Data visualization dashboard for business analytics, built with React and D3.js.</div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Project Three">
+                    <h3><i class="fas fa-mobile-alt"></i> Project Three</h3>
+                    <div style="color:var(--text-light);font-size:1em;">Mobile-first portfolio template with smooth animations and dark mode support.</div>
+                </div>
+            </div>
+        </section>
+        <section id="experience" class="section">
+            <div class="section-header">
+                <i class="fas fa-timeline"></i>
+                <h1>Experience</h1>
+            </div>
+            <ul class="timeline">
+                <li>
+                    <span class="timeline-icon"><i class="fas fa-briefcase"></i></span>
+                    <div class="timeline-content">
+                        <strong>Web Developer</strong> at ABC Corp (2022–Present)<br>
+                        <span style="color:var(--text-light);font-size:1em;">Developed scalable web apps and led UI redesigns.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="timeline-icon"><i class="fas fa-user-graduate"></i></span>
+                    <div class="timeline-content">
+                        <strong>Frontend Intern</strong> at XYZ Studio (2021–2022)<br>
+                        <span style="color:var(--text-light);font-size:1em;">Worked on interactive landing pages and animations.</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section id="testimonials" class="section">
+            <div class="section-header">
+                <i class="fas fa-quote-left"></i>
+                <h1>Testimonials</h1>
+            </div>
+            <div class="testimonials-list">
+                <div class="testimonial-card">
+                    <div>"Thio is a fantastic developer who always delivers on time!"</div>
+                    <div class="testimonial-user">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client A">
+                        <div>
+                            <div class="testimonial-name">Client A</div>
+                            <div class="testimonial-role">Product Manager</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div>"Creative, reliable, and a pleasure to work with."</div>
+                    <div class="testimonial-user">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client B">
+                        <div>
+                            <div class="testimonial-name">Client B</div>
+                            <div class="testimonial-role">CEO, Startup</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="contact" class="section">
-            <h1>Contact</h1>
-            <p>Email: thio@example.com</p>
+            <div class="section-header">
+                <i class="fas fa-paper-plane"></i>
+                <h1>Contact</h1>
+            </div>
+            <p>Email: <a href="mailto:thio@example.com">thio@example.com</a></p>
+            <div class="contact-links">
+                <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:thio@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
         </section>
     </main>
+    <script>
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        // Smooth scroll
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href').slice(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: target.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
